@@ -96,31 +96,32 @@
           `translate(${px}px, ${py}px)`;
       });
     });
+    
     var clignotant = false;
-var intervalCligno = null;
+    var intervalCligno = null;
 
-document.addEventListener('mousemove', (e) => {
-  var elem = document.elementFromPoint(e.clientX, e.clientY);
+    document.addEventListener('mousemove', (e) => {
+      var elem = document.elementFromPoint(e.clientX, e.clientY);
 
-  if (elem && elem.classList.contains('oeil')) {
-    // Le curseur est dans la partie blanche
-    if (!clignotant) {
-      clignotant = true;
-      var rouge = false;
-      intervalCligno = setInterval(() => {
-        document.body.style.backgroundColor = rouge ? '#000' : '#ff0000';
-        rouge = !rouge;
-      }, 100);
-    }
-  } else {
-    // Le curseur est sorti de la partie blanche
-    if (clignotant) {
-      clignotant = false;
-      clearInterval(intervalCligno);
-      document.body.style.backgroundColor = '#000';
-    }
-  }
-});
+      if (elem && elem.classList.contains('oeil')) {
+        // Le curseur est dans la partie blanche
+        if (!clignotant) {
+          clignotant = true;
+          var rouge = false;
+          intervalCligno = setInterval(() => {
+            document.body.style.backgroundColor = rouge ? '#000' : '#ff0000';
+            rouge = !rouge;
+          }, 100);
+        }
+      } else {
+        // Le curseur est sorti de la partie blanche
+        if (clignotant) {
+          clignotant = false;
+          clearInterval(intervalCligno);
+          document.body.style.backgroundColor = '#000';
+        }
+      }
+    });
   </script>
 
 </body>
