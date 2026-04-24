@@ -2,71 +2,61 @@
 <html lang="fr">
 <head>
 <style>
-  body {
-    margin: 0;
-    background: #000;
-    overflow: hidden;
-  }
+
+  /* LES YEUX — fixés en arrière-plan */
   #grille {
-    display: flex;
-    flex-wrap: wrap;
+    position: fixed;       /* ← reste en place même si on scrolle */
+    top: 0; left: 0;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
     align-content: flex-start;
+    background: #000;
+    z-index: 0;            /* ← tout en bas */
   }
-  .oeil-wrap {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .oeil {
-    width: 58px;
-    height: 38px;
-    background: white;
-    border-radius: 50%;
-    border: 2px solid #333;
+
+  .oeil-wrap { /* ... ton CSS des yeux ... */ }
+  .oeil      { /* ... */ }
+  .pupille   { /* ... */ }
+
+  /* TON CONTENU — par-dessus les yeux */
+  #contenu {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 10;           /* ← au-dessus des yeux */
+    padding: 40px;
   }
-  .pupille {
-    width: 18px;
-    height: 18px;
-    background: #111;
-    border-radius: 50%;
-    position: absolute;
+
+  .box {
+    background: rgba(0, 0, 0, 0.75);   /* ← fond semi-transparent */
+    border: 2px solid #ff0000;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: "Comic Sans MS", cursive;
   }
+
 </style>
 </head>
 <body>
-<div id="grille"></div>
-<script>
-  const grille = document.getElementById('grille');
-  const cols = Math.floor(window.innerWidth / 80);
-  const rows = Math.floor(window.innerHeight / 80);
 
-  for (let i = 0; i < cols * rows; i++) {
-    const wrap = document.createElement('div');
-    wrap.className = 'oeil-wrap';
-    wrap.innerHTML = '<div class="oeil"><div class="pupille"></div></div>';
-    grille.appendChild(wrap);
-  }
+  <!-- FOND : les yeux -->
+  <div id="grille"></div>
 
-  document.addEventListener('mousemove', (e) => {
-    document.querySelectorAll('.oeil-wrap').forEach(wrap => {
-      const rect = wrap.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
-      const px = Math.cos(angle) * 9;
-      const py = Math.sin(angle) * 9;
-      wrap.querySelector('.pupille').style.transform =
-        `translate(${px}px, ${py}px)`;
-    });
-  });
-</script>
+  <!-- CONTENU : par-dessus -->
+  <div id="contenu">
+    <div class="box">
+      <h2>Titre de ma box</h2>
+      <p>Du texte par-dessus les yeux !</p>
+    </div>
+    <div class="box">
+      <p>Une autre box...</p>
+    </div>
+  </div>
+
+  <script>
+    /* ... ton JS des yeux ... */
+  </script>
+
 </body>
 </html>
