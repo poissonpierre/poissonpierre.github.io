@@ -1,1 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>41ème Fête du Calibène</title>
+<style>
+body {
+  background-color: #000033;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='white' opacity='0.8'/%3E%3Ccircle cx='80' cy='15' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='150' cy='40' r='1.5' fill='white' opacity='0.9'/%3E%3Ccircle cx='190' cy='10' r='1' fill='white' opacity='0.5'/%3E%3Ccircle cx='50' cy='80' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='120' cy='70' r='2' fill='white' opacity='0.6'/%3E%3Ccircle cx='170' cy='90' r='1' fill='white' opacity='0.8'/%3E%3Ccircle cx='10' cy='130' r='1.5' fill='white' opacity='0.5'/%3E%3Ccircle cx='90' cy='150' r='1' fill='white' opacity='0.9'/%3E%3Ccircle cx='160' cy='160' r='1.5' fill='white' opacity='0.7'/%3E%3Ccircle cx='40' cy='190' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='130' cy='185' r='2' fill='white' opacity='0.4'/%3E%3Ccircle cx='195' cy='170' r='1' fill='white' opacity='0.8'/%3E%3C/svg%3E");
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
 
+marquee.top-band {
+  background: #F2FFFE;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 0;
+  border-top: 3px solid #DE0909;
+  border-bottom: 3px solid #DE0909;
+  text-shadow: 2px 2px 0 #696969;
+}
+
+#wrapper {
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#header {
+  text-align: center;
+  background: #F2FFFE;
+  border: 4px solid #DE0909;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+#header h1 {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 42px;
+  color: #000000;
+  text-shadow: 3px 3px 0 #666666, 6px 6px 0 #ABABAB;
+  margin: 0 0 8px 0;
+  animation: clignoter 2s step-end infinite;
+}
+
+@keyframes clignoter {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+#header .sous-titre {
+  font-size: 20px;
+  color: #000000;
+  text-shadow: 0 0 8px #666666;
+}
+
+#header .date {
+  display: inline-block;
+  margin-top: 10px;
+  background: #DE0909;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 20px;
+  border: 3px dashed #ffffff;
+}
+
+.separateur {
+  text-align: center;
+  font-size: 28px;
+  color: #ff00ff;
+  letter-spacing: 5px;
+  margin: 10px 0;
+  text-shadow: 0 0 10px #ff00ff;
+  animation: colorshift 2s linear infinite;
+}
+
+.sep {
+  text-align: center;
+  font-size: 20px;
+  color: #ff6600;
+  margin: 6px 0;
+  text-shadow: 0 0 8px #ff6600;
+  letter-spacing: 4px;
+  animation: colorshift 1.5s linear infinite;
+}
+  
+@keyframes colorshift {
+  0%   { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+  25%  { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+  50%  { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+  75%  { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+  100% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+}
+
+#content {
+  display: table;
+  width: 100%;
+  border-spacing: 10px;
+}
+
+#colonne-gauche {
+  display: table-cell;
+  width: 65%;
+  vertical-align: top;
+}
+
+#colonne-droite {
+  display: table-cell;
+  width: 30%;
+  vertical-align: top;
+}
+
+.bloc {
+  background: #F2FFFE;
+  border: 3px solid #DE0909;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.bloc-titre {
+  background: #DE0909;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #636363;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bloc-contenu {
+  padding: 10px;
+}
+
+table.programme {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.programme tr {
+  border-bottom: 1px dashed #333399;
+}
+
+table.programme tr:hover {
+  background: #000066;
+}
+
+table.programme td {
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+table.programme td.heure {
+  color: #000000;
+  font-weight: bold;
+  font-size: 15px;
+  white-space: nowrap;
+  width: 60px;
+  text-shadow: 0 0 8px #BABABA;
+}
+
+table.programme td.icone {
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+}
+
+table.programme td.desc strong {
+  color: #DE0909;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+table.programme td.desc span {
+  color: #cccccc;
+  font-size: 12px;
+}
+
+table.menu {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.menu td {
+  padding: 5px 8px;
+  border: 1px solid #330066;
+  vertical-align: top;
+}
+
+table.menu td.plat {
+  color: #00ffff;
+  font-weight: bold;
+  width: 35%;
+}
+
+table.menu td.detail {
+  color: #cccccc;
+}
+
+.widget {
+  background: #000044;
+  border: 2px solid #00ffff;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.widget-titre {
+  background: #00ffff;
+  color: #000033;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 3px;
+  margin: -8px -8px 8px -8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#countdown {
+  font-size: 28px;
+  color: #ff0000;
+  font-weight: bold;
+  text-shadow: 0 0 12px #ff0000;
+  animation: clignoter 0.8s step-end infinite;
+  display: block;
+  margin: 5px 0;
+}
+
+.liste-apporter {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+.liste-apporter li {
+  padding: 3px 0;
+  border-bottom: 1px dotted #333399;
+  color: #cccccc;
+}
+
+.liste-apporter li::before {
+  content: "✦ ";
+  color: #ff00ff;
+}
+
+.gros-bouton {
+  display: block;
+  background: #ff0000;
+  color: #ffff00;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border: 3px outset #ff6666;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #000;
+  cursor: pointer;
+  margin: 8px 0;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px #ff0000; }
+  to   { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff6600; }
+}
+
+.gros-bouton:hover { background: #cc0000; }
+
+.visiteurs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.visiteur-nom {
+  background: #110033;
+  border: 1px solid #5500aa;
+  padding: 3px 5px;
+  color: #cc99ff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sondage label {
+  display: block;
+  font-size: 12px;
+  color: #cccccc;
+  margin: 4px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sondage input {
+  accent-color: #ff00ff;
+  margin-right: 5px;
+}
+
+.commentaire {
+  background: #000033;
+  border-left: 4px solid #ff00ff;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.commentaire .auteur {
+  color: #ff69b4;
+  font-weight: bold;
+}
+
+.commentaire .texte {
+  color: #cccccc;
+  margin-top: 3px;
+}
+
+.titre-chanson {
+  color: #ff99ff;
+  font-weight: bold;
+  animation: colorshift 3s linear infinite;
+}
+
+.compteur {
+  display: inline-block;
+  background: #000000;
+  border: 2px inset #333333;
+  font-family: "Courier New", monospace;
+  font-size: 18px;
+  color: #00ff00;
+  letter-spacing: 4px;
+  padding: 4px 12px;
+  text-shadow: 0 0 8px #00ff00;
+}
+
+#footer {
+  text-align: center;
+  background: #000033;
+  border-top: 3px solid #DE0909;
+  padding: 10px;
+  font-size: 11px;
+  color: #666666;
+  margin-top: 10px;
+}
+
+#footer a { color: #ff00ff; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<marquee class="top-band" scrollamount="4">
+  ✨ LA FETE DU CALIBENE ✨ SAMEDI 27 JUIN 2026 ✨ MONTFLEUR 39320 ✨ LA FETE DU CALIBENE ✨ SAMEDI 27 JUIN 2026 ✨ MONTFLEUR 39320 ✨ LA FETE DU CALIBENE ✨ SAMEDI 27 JUIN 2026 ✨ MONTFLEUR 39320 ✨ LA FETE DU CALIBENE ✨ SAMEDI 27 JUIN 2026 ✨ MONTFLEUR 39320 ✨
+</marquee>
+
+<div id="wrapper">
+
+  <div id="header">
+    <div style="font-size:13px; color:#DE0909; letter-spacing:3px;">★ ASSOCIATION FRANCAISE DU CALIBENE ★</div>
+    <h1>~*~ La 41ème Fête Du Calibène ~*~</h1>
+    <div class="sous-titre">::: LA FETE DU CALIBENE EST DE RETOUR :::</div>
+    <div class="date">📅 SAMEDI 27 JUIN 2026 — PLACE DES MARRONNIERS — MONTFLEUR 39320</div>
+  </div>
+
+  <div class="sep">🐟 ≋≋≋ 🐟 ≋≋≋ 🐟 ≋≋≋ 🐟 ≋≋≋ 🐟</div>
+
+
+  <div id="content">
+
+    <div id="colonne-gauche">
+      <div class="bloc">
+        <div class="bloc-titre">Le Programme et Informations Générales</div>
+        <div class="bloc-contenu">
+          <table class="programme">
+            <tr>
+              <td class="heure">Toute la journée</td>
+              <td class="desc">
+                <strong>Marché et artisanat autour du calibène.</strong>
+                <span>De nombreux exposants sont attendus pour présenter des articles autour du calibène.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">8h30</td>
+              <td class="desc">
+                <strong>Ouverture des portes &amp; accueil des participants.</strong>
+                <span>Café et petit déjeuné de bienvenue offert par l'Association Française du Calibène.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">12h30</td>
+              <td class="desc">
+                <strong>Repas du midi.</strong>
+                <span>Cuisine autour du calibène : la cheffe Garcia Douze vous propose son menu.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">18h00</td>
+              <td class="desc">
+                <strong>Déterrement et grande célébration du calibène.</strong>
+                <span>Le rituel du déterrement et la grande danse du calibène en compagnie de Basile Fougeron.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">19h00</td>
+              <td class="desc">
+                <strong>Le mot de la fin.</strong>
+                <span>Remerciement de toute l'équipe et du comité d'organisation.</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <div class="bloc">
+        <div class="bloc-titre">Le Programme des conférences</div>
+        <div class="bloc-contenu">
+          <table class="programme">
+            <tr>
+              <td class="heure">9h00</td>
+              <td class="desc">
+                <strong>Discours de bienvenue.</strong>
+                <span>Par Emmanuel Petit-pied, fondateur de l'Association Française du Calibène et de la fête du calibène.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">9h30</td>
+              <td class="desc">
+                <strong>Première conférence : le calibène à travers le temps et l'espace.</strong>
+                <span>Zoubir Ben-Kacem, historien de l'artisanat européen, nous parle de la longue histoire du calibène et de ses racines dans la campagne européenne du 12ème siècle.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">11h00</td>
+              <td class="desc">
+                <strong>Deuxième conférence : le calibène se réinvente.</strong>
+                <span>Donovan Tartinette, entrepreneur à succès et inventeur du calibène de voyage, présente les dernières innovations autour du calibène.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">14h00</td>
+              <td class="desc">
+                <strong>Troisème conférence : enterrer son calibène, pourquoi faire ?</strong>
+                <span>Eric Moussakaka rétablit de manière scientifique la vérité autour de cette pratique ancestrale. Démonstration sur place.</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="heure">16h00</td>
+              <td class="desc">
+                <strong>Quatrième conférence : le calibène dans les médias dominants.</strong>
+                <span>Basile Fougeron, fondateur de Calibène Magazine, rappelle les incursions fulgurantes du calibène dans les médias dominants.</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+ 
+      <div class="bloc">
+        <div class="bloc-titre">📌 Informations Pratiques 📌</div>
+        <div class="bloc-contenu" style="font-size:13px;">
+          <p style="color:#00ffff; margin:0 0 5px;">📍 <strong style="color:#ffff00;">Place des marrnniers</strong> — 39320 Montfleur</p>
+          <p style="margin:3px 0; color:#cccccc;">🚗 Parking gratuit sur place</p>
+          <p style="margin:3px 0; color:#cccccc;">🚗 1h30 depuis Lyon — Accès via l'A40</p>
+          <p style="margin:3px 0; color:#cccccc;">🐾 Les animaux ne sont pas admis 🐶</p>
+          <p style="margin:8px 0 3px; color:#ff69b4;"><strong>Contact : Yolando Di Biaggio — yolando.dibiaggio@gmail.com</strong></p>
+          <a class="gros-bouton" href="mailto:yolando.dibiaggio@gmail.com">
+            &gt;&gt;&gt; COMFIRMEZ VOTRE PRESENCE PAR MAIL &lt;&lt;&lt;
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="colonne-droite">
+
+      <div class="widget">
+        <div class="widget-titre">Responsable de l'organisation</div>
+        <img src="Augustin_le_vrai.png" alt="description" style="width:100%; display:block;">          
+        <div style="font-size:18px; color:#FFFFFF;">Tournedos GASPACHO</div>
+        <div style="font-size:18px; color:#FFFFFF;">tournedos.gaspacho@gmail.com</div>
+      </div>
+      
+      <div class="widget">
+        <div class="widget-titre">L'affiche officielle</div>
+        <img src="CALIBENE.png" alt="description" style="width:100%; display:block;">          
+      </div>
+
+      <div class="widget">
+        <div class="widget-titre">👁️ Visiteurs 👁️</div>
+        <div class="compteur">004271</div>
+        <div style="font-size:10px; color:#666666; margin-top:4px;">personnes ont consulté cette page</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sep">🐟 ≋≋≋ 🐟 ≋≋≋ 🐟 ≋≋≋ 🐟 ≋≋≋ 🐟</div>
+
+  <div id="footer">
+    <p>Meilleure résolution : 800x600 — Internet Explorer 6.0 </p>
+    <p style="margin-top:5px; color:#444466; font-size:10px;">© 2026 Yoland Di Biaggio — Tous droits réservés</p>
+  </div>
+
+</div>
+
+<script>
+var fete = new Date("2025-06-14T18:00:00");
+function updateCountdown() {
+  var now = new Date();
+  var diff = Math.floor((fete - now) / (1000 * 60 * 60 * 24));
+  var el = document.getElementById("countdown");
+  if (diff > 0) {
+    el.textContent = diff;
+  } else if (diff === 0) {
+    el.textContent = "C'est AUJOURD'HUI !!";
+    el.style.fontSize = "14px";
+  } else {
+    el.textContent = "C'était top !";
+    el.style.fontSize = "14px";
+  }
+}
+updateCountdown();
+</script>
+
+</body>
+</html>
