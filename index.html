@@ -187,7 +187,7 @@ body {
 /* CORPS PRINCIPAL */
 #corps {
   display: flex;
-  height: calc(100vh - 130px);
+  height: calc(100% - 130px);
 }
 
 /* PANNEAU GAUCHE */
@@ -547,7 +547,7 @@ body {
   <div id="barre-recherche">
     <label>🔍 Rechercher dans l'encyclopédie :</label>
     <input type="text" placeholder="Ex : photosynthèse, mammifère, cellule...">
-    <div class="btn-chercher">Chercher</div>
+    <div class="btn-chercher" onclick="lancerRecherche()">Chercher</div>
   </div>
 
   <!-- CORPS -->
@@ -739,7 +739,6 @@ body {
     </div>
     <div class="statut-panel" id="horloge">--:--:--</div>
   </div>
-
 </div>
 
 <script>
@@ -752,6 +751,15 @@ function majHorloge() {
 }
 majHorloge();
 setInterval(majHorloge, 1000);
+
+function lancerRecherche() {
+  var terme = document.querySelector('#barre-recherche input').value;
+  if (terme.trim() === '') {
+    alert('Veuillez saisir un terme de recherche.');
+  } else {
+    alert('Erreur : Impossible de charger le module de recherche.\n\nFichier BIORECHERCHE.DLL introuvable.\n\nVeuillez réinstaller BioEncyclo 2001.');
+  }
+}   
 </script>
 
 </body>
