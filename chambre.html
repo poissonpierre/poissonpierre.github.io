@@ -84,33 +84,55 @@
       wrap.innerHTML = '<div class="oeil"><div class="pupille"></div></div>';
       grille.appendChild(wrap);
     }
-
+    
+    document.addEventListener('mousemove', (e) => {
+      document.querySelectorAll('.oeil-wrap').forEach(wrap => {
+        const rect = wrap.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+        const px = Math.cos(angle) * 9;
+        const py = Math.sin(angle) * 9;
+        wrap.querySelector('.pupille').style.transform =
+          `translate(${px}px, ${py}px)`;
+      });
+    });
+    
 
     var clignotant = false;
-    var intervalCligno = null;
+var intervalCligno = null;
 
-    document.addEventListener('mousemove', (e) => {
-      var elem = document.elementFromPoint(e.clientX, e.clientY);
+document.addEventListener('mousemove', (e) => {
+  var elem = document.elementFromPoint(e.clientX, e.clientY);
+  
+  // On remonte les parents pour voir si on est dans un .oeil
+  var dansOeil = false;
+  var current = elem;
+  while (current) {
+    if (current.classList && current.classList.contains('oeil')) {
+      dansOeil = true;
+      break;
+    }
+    current = current.parentElement;
+  }
 
-      if (elem && elem.classList.contains('oeil')) {
-        // Le curseur est dans la partie blanche
-        if (!clignotant) {
-          clignotant = true;
-          var rouge = false;
-          intervalCligno = setInterval(() => {
-            document.body.style.backgroundColor = rouge ? '#000' : '#ff0000';
-            rouge = !rouge;
-          }, 100);
-        }
-      } else {
-        // Le curseur est sorti de la partie blanche
-        if (clignotant) {
-          clignotant = false;
-          clearInterval(intervalCligno);
-          document.body.style.backgroundColor = '#000';
-        }
-      }
-    });
+  if (dansOeil) {
+    if (!clignotant) {
+      clignotant = true;
+      var rouge = false;
+      intervalCligno = setInterval(() => {
+        grille.style.backgroundColor = rouge ? '#000' : '#ff0000';
+        rouge = !rouge;
+      }, 100);
+    }
+  } else {
+    if (clignotant) {
+      clignotant = false;
+      clearInterval(intervalCligno);
+      grille.style.backgroundColor = '#000';
+    }
+  }
+});
   </script>
 
 </body>
