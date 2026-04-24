@@ -85,19 +85,7 @@
       grille.appendChild(wrap);
     }
 
-    document.addEventListener('mousemove', (e) => {
-      document.querySelectorAll('.oeil-wrap').forEach(wrap => {
-        const rect = wrap.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
-        const px = Math.cos(angle) * 9;
-        const py = Math.sin(angle) * 9;
-        wrap.querySelector('.pupille').style.transform =
-          `translate(${px}px, ${py}px)`;
-      });
-    });
-    
+
     var clignotant = false;
     var intervalCligno = null;
 
