@@ -68,11 +68,7 @@
   <!-- CONTENU : par-dessus -->
   <div id="contenu">
     <div class="box">
-      <h2>Titre de ma box</h2>
-      <p>Du texte par-dessus les yeux !</p>
-    </div>
-    <div class="box">
-      <p>Une autre box...</p>
+      <p>II plantera la banniere de Castille sur les murs de Madrid au cri de Ville gagnée, et le petit Roi s'en ira tout penaud.</p>
     </div>
   </div>
 
@@ -100,6 +96,31 @@
           `translate(${px}px, ${py}px)`;
       });
     });
+    var clignotant = false;
+var intervalCligno = null;
+
+document.addEventListener('mousemove', (e) => {
+  var elem = document.elementFromPoint(e.clientX, e.clientY);
+
+  if (elem && elem.classList.contains('oeil')) {
+    // Le curseur est dans la partie blanche
+    if (!clignotant) {
+      clignotant = true;
+      var rouge = false;
+      intervalCligno = setInterval(() => {
+        document.body.style.backgroundColor = rouge ? '#000' : '#ff0000';
+        rouge = !rouge;
+      }, 100);
+    }
+  } else {
+    // Le curseur est sorti de la partie blanche
+    if (clignotant) {
+      clignotant = false;
+      clearInterval(intervalCligno);
+      document.body.style.backgroundColor = '#000';
+    }
+  }
+});
   </script>
 
 </body>
